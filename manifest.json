@@ -1,0 +1,25 @@
+{
+  "manifest_version": 3,
+  "name": "Get rid of infinite scrolls in YouTube",
+  "version": "1.0",
+  "description": "A chrome extension to fix the UX scroll issue(s) in YouTube.",
+  "icons": {
+    "128": "icon.png"
+  },
+  "permissions": [
+    "scripting"
+  ],
+  "host_permissions": [
+    "https://www.youtube.com/*"
+  ],
+  "content_scripts": [
+    {
+      "matches": [
+        "https://www.youtube.com/*"
+      ],
+      "js": [
+        "content.js"
+      ]
+    }
+  ]
+}
