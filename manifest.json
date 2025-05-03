@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "Better Scroll for YouTube",
-  "version": "1.0",
+  "version": "1.1",
   "description": "Replace infinite scroll(s) on YouTube with tidy scrollable containers.",
   "icons": {
     "128": "icon.png"
