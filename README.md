@@ -1,4 +1,4 @@
-# YouTube Scroll Fix Extension
+# Better Scroll for Youtube
 
 A Chrome extension that improves the YouTube viewing experience by adding scrollable containers for recommendations and comments sections, eliminating the need for infinite scroll.
 
@@ -11,7 +11,7 @@ A Chrome extension that improves the YouTube viewing experience by adding scroll
 
 ## Demo
 
-![fixYtScroll-Demo](https://github.com/user-attachments/assets/ffa6d300-12eb-43e8-a280-d10b8c6b2f42)
+![betterscroll-yt-demo](https://github.com/user-attachments/assets/ffa6d300-12eb-43e8-a280-d10b8c6b2f42)
 
 ## Contributing
 
@@ -19,4 +19,4 @@ Feel free to submit issues and pull requests for improvements 😊
 
 ## References
 
-https://developer.chrome.com/docs/extensions/get-started/tutorial/hello-world
+<https://developer.chrome.com/docs/extensions/get-started/tutorial/hello-world>
