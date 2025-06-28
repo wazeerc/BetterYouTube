@@ -1,9 +1,24 @@
 # Contributing
 
-When contributing to this repository, please first discuss the change you wish to make via issue,
-email, or any other method with the owners of this repository before making a change. 
+When contributing to BetterYoutube, please first discuss the change you wish to make via issue,
+email, or any other method with the owners of this repository before making a change.
 
 Please note we have a code of conduct, please follow it in all your interactions with the project.
+
+## Features Overview
+
+BetterYoutube combines two main features:
+- **Better Scrolling**: Replaces infinite scroll with contained scrollable sections
+- **Picture-in-Picture**: Adds PiP functionality with a convenient video control button
+
+When contributing, consider how your changes affect both features and ensure compatibility across different YouTube layouts.
+
+## Development Guidelines
+
+- Test changes on various YouTube pages (home, watch, search, etc.)
+- Ensure the PiP button integrates seamlessly with YouTube's video controls
+- Verify that scrollable containers adapt properly to different screen sizes
+- Check that the extension popup interface remains functional
 
 ## Pull Request Process
 
@@ -13,13 +28,13 @@ Please note we have a code of conduct, please follow it in all your interactions
 4. Push to the branch (`git push origin feature/amazing-feature`)
 5. Open a Pull Request
 
-- Ensure any install or build dependencies are removed before the end of the layer when doing a 
+- Ensure any install or build dependencies are removed before the end of the layer when doing a
    build.
-- Update the README.md with details of changes to the interface, this includes new environment 
+- Update the README.md with details of changes to the interface, this includes new environment
    variables, exposed ports, useful file locations and container parameters.
 - Increase the version numbers in any examples files and the README.md to the new version that this
    Pull Request would represent. The versioning scheme we use is [SemVer](http://semver.org/).
-- You may merge the Pull Request in once you have the sign-off of two other developers, or if you 
+- You may merge the Pull Request in once you have the sign-off of two other developers, or if you
    do not have permission to do that, you may request the second reviewer to merge it for you.
 
 ## Code of Conduct

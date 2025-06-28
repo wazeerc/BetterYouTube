@@ -1,13 +1,24 @@
 {
   "manifest_version": 3,
-  "name": "Better Scroll for YouTube",
-  "version": "1.1",
-  "description": "Replace infinite scroll(s) on YouTube with tidy scrollable containers.",
+  "name": "BetterYoutube",
+  "version": "2.0",
+  "description": "BetterYoutube: Replace infinite scroll(s) on YouTube with tidy scrollable containers and add an enhanced Picture-in-Picture functionality.",
   "icons": {
     "128": "icon.png"
   },
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "128": "icon.png"
+    }
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
   "permissions": [
-    "scripting"
+    "scripting",
+    "activeTab",
+    "storage"
   ],
   "host_permissions": [
     "https://www.youtube.com/*"
@@ -19,7 +30,8 @@
       ],
       "js": [
         "content.js"
-      ]
+      ],
+      "run_at": "document_idle"
     }
   ]
 }
