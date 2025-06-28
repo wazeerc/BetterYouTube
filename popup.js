@@ -18,7 +18,7 @@ class PopupManager {
   async checkCurrentTab() {
     try {
       const [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
-      this.isYouTube = tab && tab.url && tab.url.includes('youtube.com/watch?');
+      this.isYouTube = tab && tab.url && /^https:\/\/(www\.)?youtube\.com\/watch\?v=/.test(tab.url);
 
       this.updateTabStatus();
     } catch (error) {

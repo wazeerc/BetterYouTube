@@ -38,8 +38,24 @@ class BetterYoutube {
             pipEnabled: true,
             scrollEnabled: true
         };
-
+        this.validateChromeAPIs();
         this.init();
+    }
+
+    /**
+     * Validate Chrome APIs availability
+     */
+    validateChromeAPIs() {
+        this.chromeAPIsAvailable = !!(
+            typeof chrome !== 'undefined' &&
+            chrome.runtime &&
+            chrome.storage &&
+            chrome.storage.sync
+        );
+
+        if (!this.chromeAPIsAvailable) {
+            console.warn('BetterYoutube: Chrome extension APIs not available. Some features may not work properly.');
+        }
     }
 
     /**
@@ -143,12 +159,11 @@ class BetterYoutube {
             this.updateAllSections();
         });
 
-        if (!this.updateAllSections()) {
-            this.observer.observe(document.documentElement, {
-                childList: true,
-                subtree: true
-            });
-        }
+        this.updateAllSections();
+        this.observer.observe(document.documentElement, {
+            childList: true,
+            subtree: true
+        });
     }
 
     /**
@@ -264,6 +279,11 @@ class BetterYoutube {
      * Load settings from storage
      */
     async loadSettings() {
+        if (!this.chromeAPIsAvailable) {
+            console.log('BetterYoutube: Chrome APIs not available, using default settings');
+            return;
+        }
+
         try {
             const result = await chrome.storage.sync.get(['pipEnabled', 'scrollEnabled']);
             this.settings.pipEnabled = result.pipEnabled !== false;
@@ -277,15 +297,18 @@ class BetterYoutube {
      * Setup message listener for settings updates
      */
     setupMessageListener() {
-        if (chrome && chrome.runtime) {
-            chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
-                if (message.action === 'updateSettings') {
-                    this.updateSettings(message.settings);
-                    sendResponse({ success: true });
-                }
-                return true;
-            });
+        if (!this.chromeAPIsAvailable) {
+            console.log('BetterYoutube: Chrome APIs not available, message listener not set up');
+            return;
         }
+
+        chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
+            if (message.action === 'updateSettings') {
+                this.updateSettings(message.settings);
+                sendResponse({ success: true });
+            }
+            return true;
+        });
     }
 
     /**
@@ -318,11 +341,23 @@ class BetterYoutube {
      * Save settings to storage
      */
     async saveSettings() {
+        if (!this.chromeAPIsAvailable) {
+            return;
+        }
+
         try {
             await chrome.storage.sync.set(this.settings);
         } catch (error) {
             console.log('BetterYoutube: Could not save settings');
         }
+    }
+
+    /**
+     * Setup event listeners
+     */
+    setupEventListeners() {
+        this.debouncedUpdate = this.debounce(() => this.updateAllSections(), 250);
+        window.addEventListener('resize', this.debouncedUpdate);
     }
 
     /**
@@ -336,6 +371,9 @@ class BetterYoutube {
         if (this.pipObserver) {
             this.pipObserver.disconnect();
             this.pipObserver = null;
+        }
+        if (this.debouncedUpdate) {
+            window.removeEventListener('resize', this.debouncedUpdate);
         }
         this.removeAllSections();
         this.removePiPButton();
