@@ -155,8 +155,12 @@ class BetterYoutube {
      * Setup scroll enhancements with observer
      */
     setupScrollEnhancements() {
-        this.observer = new MutationObserver(() => {
+        const debouncedUpdateAllSections = this.debounce(() => {
             this.updateAllSections();
+        }, 300);
+
+        this.observer = new MutationObserver(() => {
+            debouncedUpdateAllSections();
         });
 
         this.updateAllSections();
@@ -290,6 +294,10 @@ class BetterYoutube {
     setupEventListeners() {
         const debouncedUpdate = this.debounce(() => this.updateAllSections(), 250);
         window.addEventListener('resize', debouncedUpdate);
+
+        document.addEventListener('DOMContentLoaded', () => {
+            this.setupPictureInPicture();
+        });
     }
 
     /**
@@ -373,14 +381,6 @@ class BetterYoutube {
         } catch (error) {
             console.log('BetterYoutube: Could not save settings');
         }
-    }
-
-    /**
-     * Setup event listeners
-     */
-    setupEventListeners() {
-        this.debouncedUpdate = this.debounce(() => this.updateAllSections(), 250);
-        window.addEventListener('resize', this.debouncedUpdate);
     }
 
     /**
