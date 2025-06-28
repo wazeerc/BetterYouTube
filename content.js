@@ -327,9 +327,9 @@ class BetterYoutube {
             return;
         }
 
-        chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
+        chrome.runtime.onMessage.addListener(async (message, sender, sendResponse) => {
             if (message.action === 'updateSettings') {
-                this.updateSettings(message.settings);
+                await this.updateSettings(message.settings);
                 sendResponse({ success: true });
             }
             return true;
