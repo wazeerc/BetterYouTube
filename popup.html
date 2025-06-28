@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>BetterYoutube</title>
+    <style>
+      body {
+        width: 300px;
+        padding: 16px;
+        font-family: system-ui;
+        background: #0f0f0f;
+        color: white;
+        margin: 0;
+      }
+      h1 {
+        font-size: 18px;
+        margin: 0 0 16px 0;
+        text-align: center;
+      }
+      .feature-section {
+        margin-bottom: 16px;
+        padding: 12px;
+        background: #212121;
+        border-radius: 12px;
+        border: 2px solid #303030;
+      }
+      .feature-title {
+        font-weight: bold;
+        margin-bottom: 8px;
+        font-size: 14px;
+      }
+      .feature-description {
+        font-size: 12px;
+        color: #f1f1f1;
+        margin-bottom: 12px;
+      }
+      button {
+        width: 100%;
+        padding: 8px 16px;
+        margin-top: 12px;
+        background: #ff0033;
+        color: #f1f1f1;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 14px;
+        font-weight: 500;
+        transition: background 0.2s ease;
+      }
+      button:hover {
+        background: #cc0029;
+      }
+      footer {
+        margin-top: 16px;
+        padding-top: 12px;
+        border-top: 1px solid #303030;
+        text-align: right;
+        font-size: 11px;
+        color: #aaa;
+      }
+      footer a {
+        color: #eee;
+        text-decoration: none;
+      }
+      footer a:hover {
+        text-decoration: underline;
+      }
+      .version {
+        display: block;
+        margin-bottom: 4px;
+        font-size: 10px;
+        color: #666;
+      }
+      .toggle-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 8px;
+      }
+      .toggle-switch {
+        position: relative;
+        width: 36px;
+        height: 20px;
+        background: #444;
+        border-radius: 10px;
+        cursor: pointer;
+        transition: background 0.3s ease-in-out;
+      }
+      .toggle-switch.active {
+        background: #ff0033;
+      }
+      .toggle-slider {
+        position: absolute;
+        top: 2px;
+        left: 2px;
+        width: 16px;
+        height: 16px;
+        background: white;
+        border-radius: 50%;
+        transition: transform 0.3s ease;
+      }
+      .toggle-switch.active .toggle-slider {
+        transform: translateX(16px);
+      }
+      .toggle-label {
+        font-size: 12px;
+        color: #ccc;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>BetterYoutube</h1>
+
+    <div class="feature-section">
+      <div class="feature-title">Picture-in-Picture</div>
+      <div class="feature-description">Pop out videos into a floating window</div>
+      <div class="toggle-container">
+        <span class="toggle-label">Enable PiP</span>
+        <button class="toggle-switch active" id="pip-toggle" role="switch" aria-checked="true" tabindex="0">
+          <div class="toggle-slider"></div>
+        </button>
+      </div>
+      <button id="pip-btn">Pop Out Video</button>
+    </div>
+
+    <div class="feature-section">
+      <div class="feature-title">Better Scrolling</div>
+      <div class="feature-description">Scrollable containers replace infinite scroll</div>
+      <div class="toggle-container">
+        <span class="toggle-label">Enable Scrolling</span>
+        <button class="toggle-switch active" id="scroll-toggle" role="switch" aria-checked="true" tabindex="0">
+          <div class="toggle-slider"></div>
+        </button>
+      </div>
+    </div>
+
+    <footer>
+      <span class="version">v2.0</span>
+      <span>A plugin by <a href="https://github.com/wazeerc" target="_blank">wazeerc</a></span>
+    </footer>
+
+    <script src="popup.js"></script>
+  </body>
+</html>
