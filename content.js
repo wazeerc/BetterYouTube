@@ -241,6 +241,11 @@ class BetterYoutube {
     triggerPictureInPicture() {
         if (!this.settings.pipEnabled) return;
 
+        if (!document.pictureInPictureEnabled) {
+            console.warn('BetterYoutube: Picture-in-Picture is not supported in this browser');
+            return;
+        }
+
         const video = document.querySelector('video');
         if (video) {
             video.requestPictureInPicture()
