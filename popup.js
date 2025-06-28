@@ -75,17 +75,14 @@ class PopupManager {
         target: { tabId: tabId },
         files: ['content.js']
       });
-
-      setTimeout(async () => {
-        try {
-          await chrome.tabs.sendMessage(tabId, {
-            action: 'updateSettings',
-            settings: this.settings
-          });
-        } catch (error) {
-          console.log('Could not send message after injection');
-        }
-      }, 500);
+      try {
+        await chrome.tabs.sendMessage(tabId, {
+          action: 'updateSettings',
+          settings: this.settings
+        });
+      } catch (error) {
+        console.log('Could not send message after injection');
+      }
     } catch (error) {
       console.log('Could not inject content script');
     }
