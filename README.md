@@ -26,7 +26,7 @@ A Chrome extension that enhances the YouTube viewing experience.
 - **Unobtrusive**: Maintains YouTube's original design aesthetic
 
 ### Picture-in-Picture
-- **Button Method**: Click the PiP button (📺) in the video player controls (next to fullscreen)
+- **Button Method**: Click the PiP button (📺) in the video player controls (next to miniplayer)
 - **Extension Popup**: Click the extension icon and select "Pop Out Video"
 
 ## Demo

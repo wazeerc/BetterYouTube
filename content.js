@@ -13,7 +13,7 @@ class BetterYoutube {
                 '#comments'
             ],
             controls: '.ytp-right-controls',
-            fullscreenBtn: '.ytp-fullscreen-button'
+            miniplayerBtn: '.ytp-miniplayer-button'
         };
 
         this.styles = {
@@ -194,9 +194,9 @@ class BetterYoutube {
         if (document.getElementById(this.pipBtnId)) return;
 
         const controls = document.querySelector(this.selectors.controls);
-        const fullscreenBtn = document.querySelector(this.selectors.fullscreenBtn);
+        const miniplayerBtn = document.querySelector(this.selectors.miniplayerBtn);
 
-        if (!controls || !fullscreenBtn) return;
+        if (!controls || !miniplayerBtn) return;
 
         const btn = document.createElement('button');
         btn.id = this.pipBtnId;
@@ -205,7 +205,7 @@ class BetterYoutube {
         btn.innerHTML = this.getPiPButtonSVG();
         btn.onclick = () => this.triggerPictureInPicture();
 
-        fullscreenBtn.parentNode.insertBefore(btn, fullscreenBtn.nextSibling);
+        miniplayerBtn.parentNode.insertBefore(btn, miniplayerBtn.nextSibling);
     }
 
     /**
