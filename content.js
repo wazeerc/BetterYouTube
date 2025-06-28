@@ -160,10 +160,19 @@ class BetterYoutube {
         });
 
         this.updateAllSections();
-        this.observer.observe(document.documentElement, {
-            childList: true,
-            subtree: true
-        });
+
+        const watchContainer = document.querySelector('ytd-watch-flexy');
+        if (watchContainer) {
+            this.observer.observe(watchContainer, {
+                childList: true,
+                subtree: true
+            });
+        } else {
+            this.observer.observe(document.documentElement, {
+                childList: true,
+                subtree: true
+            });
+        }
     }
 
     /**
@@ -248,10 +257,18 @@ class BetterYoutube {
             this.addPiPButton();
         });
 
-        this.pipObserver.observe(document.body, {
-            childList: true,
-            subtree: true
-        });
+        const playerContainer = document.querySelector('#movie_player');
+        if (playerContainer) {
+            this.pipObserver.observe(playerContainer, {
+                childList: true,
+                subtree: true
+            });
+        } else {
+            this.pipObserver.observe(document.body, {
+                childList: true,
+                subtree: true
+            });
+        }
 
         this.addPiPButton();
     }
@@ -318,7 +335,10 @@ class BetterYoutube {
         const oldSettings = { ...this.settings };
         this.settings = { ...newSettings };
 
+        let hasChanges = false;
+
         if (oldSettings.scrollEnabled !== this.settings.scrollEnabled) {
+            hasChanges = true;
             if (this.settings.scrollEnabled) {
                 this.setupScrollEnhancements();
             } else {
@@ -327,6 +347,7 @@ class BetterYoutube {
         }
 
         if (oldSettings.pipEnabled !== this.settings.pipEnabled) {
+            hasChanges = true;
             if (this.settings.pipEnabled) {
                 this.setupPictureInPicture();
             } else {
@@ -334,7 +355,9 @@ class BetterYoutube {
             }
         }
 
-        this.saveSettings();
+        if (hasChanges) {
+            this.saveSettings();
+        }
     }
 
     /**

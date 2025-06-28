@@ -122,6 +122,9 @@ class PopupManager {
     const scrollToggle = document.getElementById('scroll-toggle');
     const pipBtn = document.getElementById('pip-btn');
 
+    const pipLabel = pipToggle?.parentElement.querySelector('.toggle-label');
+    const scrollLabel = scrollToggle?.parentElement.querySelector('.toggle-label');
+
     const isDisabled = !this.isYouTube;
 
     if (pipToggle) {
@@ -144,10 +147,6 @@ class PopupManager {
       pipBtn.style.opacity = btnDisabled ? '0.3' : '1';
       pipBtn.style.cursor = btnDisabled ? 'not-allowed' : 'pointer';
     }
-
-    // Update toggle labels
-    const pipLabel = document.querySelector('#pip-toggle').parentElement.querySelector('.toggle-label');
-    const scrollLabel = document.querySelector('#scroll-toggle').parentElement.querySelector('.toggle-label');
 
     if (pipLabel) {
       pipLabel.style.color = isDisabled ? '#666' : '#ccc';
