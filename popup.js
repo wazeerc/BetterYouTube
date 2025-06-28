@@ -129,6 +129,7 @@ class PopupManager {
       pipToggle.classList.toggle('disabled', isDisabled);
       pipToggle.style.opacity = isDisabled ? '0.3' : '1';
       pipToggle.style.cursor = isDisabled ? 'not-allowed' : 'pointer';
+      pipToggle.setAttribute('aria-checked', this.settings.pipEnabled && !isDisabled ? 'true' : 'false');
     }
 
     if (scrollToggle) {
@@ -136,6 +137,7 @@ class PopupManager {
       scrollToggle.classList.toggle('disabled', isDisabled);
       scrollToggle.style.opacity = isDisabled ? '0.3' : '1';
       scrollToggle.style.cursor = isDisabled ? 'not-allowed' : 'pointer';
+      scrollToggle.setAttribute('aria-checked', this.settings.scrollEnabled && !isDisabled ? 'true' : 'false');
     }
 
     if (pipBtn) {
