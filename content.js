@@ -292,8 +292,8 @@ class BetterYoutube {
      * Setup event listeners
      */
     setupEventListeners() {
-        const debouncedUpdate = this.debounce(() => this.updateAllSections(), 250);
-        window.addEventListener('resize', debouncedUpdate);
+        this.debouncedUpdate = this.debounce(() => this.updateAllSections(), 250);
+        window.addEventListener('resize', this.debouncedUpdate);
 
         document.addEventListener('DOMContentLoaded', () => {
             this.setupPictureInPicture();
@@ -397,6 +397,7 @@ class BetterYoutube {
         }
         if (this.debouncedUpdate) {
             window.removeEventListener('resize', this.debouncedUpdate);
+            this.debouncedUpdate = null;
         }
         this.removeAllSections();
         this.removePiPButton();
