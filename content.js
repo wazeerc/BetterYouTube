@@ -299,10 +299,6 @@ class BetterYoutube {
     setupEventListeners() {
         this.debouncedUpdate = this.debounce(() => this.updateAllSections(), 250);
         window.addEventListener('resize', this.debouncedUpdate);
-
-        document.addEventListener('DOMContentLoaded', () => {
-            this.setupPictureInPicture();
-        });
     }
 
     /**
