@@ -28,8 +28,14 @@ class PopupManager {
   }
 
   updateTabStatus() {
-    const title = document.getElementsByTagName('h1')[0];
-    title && (title.style.opacity = !this.isYouTube && '0.25');
+    const body = document.body;
+    if (this.isYouTube) {
+      body.classList.remove('not-youtube');
+    } else {
+      body.classList.add('not-youtube');
+    }
+    const notYoutubeHint = document.getElementById('not-youtube-hint');
+    notYoutubeHint && (notYoutubeHint.style.display = this.isYouTube ? 'none' : 'block');
   }
 
   async loadSettings() {
