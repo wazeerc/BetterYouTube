@@ -31,7 +31,7 @@ A Chrome extension that enhances the YouTube viewing experience.
 
 ## Demo
 
-![betterscroll-yt-demo](https://github.com/user-attachments/assets/ffa6d300-12eb-43e8-a280-d10b8c6b2f42)
+![better-youtube-demo](https://github.com/user-attachments/assets/4f89a230-30a3-4f70-927c-8beb35110058)
 
 ## Contributing
 
